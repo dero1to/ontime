@@ -46,16 +46,16 @@ export default function TriggersList(props: TriggersListProps) {
   return (
     <Panel.Card>
       <Panel.SubHeader>
-        Manage triggers
+        トリガー管理
         <Button type='submit' form='trigger-form' disabled={!canAdd} loading={false} onClick={() => setShowForm(true)}>
-          New <IoAdd />
+          新規 <IoAdd />
         </Button>
       </Panel.SubHeader>
       <Panel.Divider />
       <Panel.Section>
         {duplicates && (
           <Panel.Error>
-            You have created multiple links between the same trigger and automation which can performance issues.
+            同じトリガーとオートメーション間に複数のリンクが作成されています。パフォーマンスの問題が発生する可能性があります。
           </Panel.Error>
         )}
         {showForm && (
@@ -64,16 +64,16 @@ export default function TriggersList(props: TriggersListProps) {
         <Panel.Table>
           <thead>
             <tr>
-              <th style={{ width: '35%' }}>Title</th>
-              <th style={{ width: '25%' }}>Lifecycle trigger</th>
-              <th style={{ width: '25%' }}>Automation</th>
+              <th style={{ width: '35%' }}>タイトル</th>
+              <th style={{ width: '25%' }}>ライフサイクルトリガー</th>
+              <th style={{ width: '25%' }}>オートメーション</th>
               <th />
             </tr>
           </thead>
           <tbody>
             {!showForm && triggers.length === 0 && (
               <Panel.TableEmpty
-                label='Create an automation to attach triggers to'
+                label='トリガーを紐付けるオートメーションを作成してください'
                 handleClick={canAdd ? () => setShowForm(true) : undefined}
               />
             )}

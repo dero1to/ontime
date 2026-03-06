@@ -62,24 +62,24 @@ export default function Welcome({ onClose }: WelcomeProps) {
           <div className={style.about}>
             <img src='ontime-logo.png' alt='ontime' className={style.logo} />
             <div>Ontime v{appVersion}</div>
-            <ExternalLink href={websiteUrl}>Website</ExternalLink>
-            <ExternalLink href={documentationUrl}>Read the docs</ExternalLink>
-            <ExternalLink href={discordUrl}>Discord server</ExternalLink>
+            <ExternalLink href={websiteUrl}>ウェブサイト</ExternalLink>
+            <ExternalLink href={documentationUrl}>ドキュメントを読む</ExternalLink>
+            <ExternalLink href={discordUrl}>Discordサーバー</ExternalLink>
           </div>
           <div className={style.column}>
             <div className={style.header}>
-              Welcome to Ontime
-              <IconButton aria-label='close welcome modal' variant='subtle-white' onClick={() => onClose()}>
+              Ontimeへようこそ
+              <IconButton aria-label='ウェルカムモーダルを閉じる' variant='subtle-white' onClick={() => onClose()}>
                 <IoClose />
               </IconButton>
             </div>
-            <Editor.Title>Select project</Editor.Title>
+            <Editor.Title>プロジェクトを選択</Editor.Title>
             <div className={style.tableContainer}>
               <table className={style.table}>
                 <thead>
                   <tr>
-                    <th>File Name</th>
-                    <th>Last Used</th>
+                    <th>ファイル名</th>
+                    <th>最終使用日</th>
                   </tr>
                 </thead>
                 <WelcomeProjectList loadProject={handleLoadProject} onClose={() => onClose()} />
@@ -91,15 +91,15 @@ export default function Welcome({ onClose }: WelcomeProps) {
       footerElements={
         <div className={style.column}>
           <div className={style.buttonRow}>
-            <Button onClick={handleLoadDemo}>Load demo project</Button>
+            <Button onClick={handleLoadDemo}>デモプロジェクトを読み込む</Button>
             <ImportProjectButton onFinish={() => onClose()} />
             <Button variant='primary' onClick={handleCallCreate}>
-              Create new...
+              新規作成...
             </Button>
           </div>
           <Editor.Label className={style.inline}>
             <Checkbox defaultChecked onCheckedChange={(checked) => postShowWelcomeDialog(checked)} />
-            Show this modal on next startup
+            次回起動時にこのモーダルを表示する
           </Editor.Label>
         </div>
       }

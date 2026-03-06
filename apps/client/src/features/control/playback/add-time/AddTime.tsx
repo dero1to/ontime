@@ -37,7 +37,7 @@ export default function AddTime(props: AddTimeProps) {
 
   return (
     <div className={style.addTime}>
-      <TimeInput name='addtime' submitHandler={handleTimeChange} time={timeInMs} placeholder='Add time' />
+      <TimeInput name='addtime' submitHandler={handleTimeChange} time={timeInMs} placeholder='時間を追加' />
       <div className={style.addButtons}>
         <TapButton onClick={() => handleAddTime('remove')} disabled={doDisableButtons} className={style.tallButtons}>
           <IoRemove />

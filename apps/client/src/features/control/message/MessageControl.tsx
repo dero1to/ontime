@@ -25,14 +25,14 @@ function TimerMessageInput() {
 
   return (
     <InputRow
-      label='Timer Message'
-      placeholder='Message shown fullscreen in stage timer'
+      label='タイマーメッセージ'
+      placeholder='ステージタイマーにフルスクリーン表示されるメッセージ'
       text={text}
       visible={visible}
       changeHandler={(newValue) => setMessage.timerText(newValue)}
     >
       <IconButton
-        aria-label='Toggle timer message visibility'
+        aria-label='タイマーメッセージの表示切り替え'
         onClick={() => setMessage.timerVisible(!visible)}
         variant={visible ? 'primary' : 'subtle'}
       >
@@ -55,14 +55,14 @@ function SecondaryInput() {
 
   return (
     <InputRow
-      label='Secondary Message'
-      placeholder='Message shown as secondary text in stage timer'
+      label='サブメッセージ'
+      placeholder='ステージタイマーにサブテキストとして表示されるメッセージ'
       text={text}
       visible={visible}
       changeHandler={(newValue) => setMessage.secondaryMessage(newValue)}
     >
       <IconButton
-        aria-label='Toggle secondary message visibility'
+        aria-label='サブメッセージの表示切り替え'
         onClick={toggleSecondary}
         variant={visible ? 'primary' : 'subtle'}
       >

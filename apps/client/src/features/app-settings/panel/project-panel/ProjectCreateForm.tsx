@@ -64,20 +64,20 @@ export default function ProjectCreateForm({ onClose }: ProjectCreateFromProps) {
       onKeyDown={(event) => preventEscape(event, onClose)}
     >
       <Panel.Title>
-        Create new project
+        新規プロジェクト作成
         <Panel.InlineElements>
           <Button onClick={onClose} variant='ghosted' disabled={isSubmitting}>
-            Cancel
+            キャンセル
           </Button>
           <Button disabled={!isValid} type='submit' loading={isSubmitting} variant='primary'>
-            Create project
+            プロジェクトを作成
           </Button>
         </Panel.InlineElements>
       </Panel.Title>
       {error && <Panel.Error>{error}</Panel.Error>}
       <Panel.Section className={style.innerColumn}>
-        <Panel.Description>Project title</Panel.Description>
-        <Input fluid placeholder='Your project name' {...register('title')} />
+        <Panel.Description>プロジェクトタイトル</Panel.Description>
+        <Input fluid placeholder='プロジェクト名を入力' {...register('title')} />
       </Panel.Section>
     </Panel.Indent>
   );

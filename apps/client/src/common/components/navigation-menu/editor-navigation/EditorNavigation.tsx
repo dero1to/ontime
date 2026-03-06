@@ -12,7 +12,7 @@ export default function EditorNavigation() {
     return (
       <NavigationMenuItem active={location.pathname === '/editor'} onClick={() => navigate('/editor')}>
         <IoLockClosedOutline />
-        Editor
+        エディター
       </NavigationMenuItem>
     );
   }
@@ -21,17 +21,17 @@ export default function EditorNavigation() {
     <>
       <NavigationMenuItem active={location.pathname === '/timercontrol'} onClick={() => navigate('/timercontrol')}>
         <IoLockClosedOutline />
-        Timer Controls
+        タイマーコントロール
       </NavigationMenuItem>
 
       <NavigationMenuItem active={location.pathname === '/messagecontrol'} onClick={() => navigate('/messagecontrol')}>
         <IoLockClosedOutline />
-        Message Controls
+        メッセージコントロール
       </NavigationMenuItem>
 
       <NavigationMenuItem active={location.pathname === '/rundown'} onClick={() => navigate('/rundown')}>
         <IoLockClosedOutline />
-        Rundown
+        ランダウン
       </NavigationMenuItem>
     </>
   );

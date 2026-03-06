@@ -45,13 +45,13 @@ export default function AutomationsList(props: AutomationsListProps) {
   return (
     <Panel.Card>
       <Panel.SubHeader>
-        Manage automations
+        オートメーション管理
         <Button
           type='submit'
           disabled={Boolean(automationFormData)}
           onClick={() => setAutomationFormData(automationPlaceholder)}
         >
-          New <IoAdd />
+          新規 <IoAdd />
         </Button>
       </Panel.SubHeader>
 
@@ -64,10 +64,10 @@ export default function AutomationsList(props: AutomationsListProps) {
       <Panel.Table>
         <thead>
           <tr>
-            <th style={{ width: '45%' }}>Title</th>
-            <th style={{ width: '15%' }}>Trigger rule</th>
-            <th style={{ width: '15%' }}>Filters</th>
-            <th style={{ width: '15%' }}>Outputs</th>
+            <th style={{ width: '45%' }}>タイトル</th>
+            <th style={{ width: '15%' }}>トリガールール</th>
+            <th style={{ width: '15%' }}>フィルター</th>
+            <th style={{ width: '15%' }}>出力</th>
             <th />
           </tr>
         </thead>
@@ -93,14 +93,14 @@ export default function AutomationsList(props: AutomationsListProps) {
                   <Panel.InlineElements align='end' relation='inner' as='td'>
                     <IconButton
                       variant='ghosted-white'
-                      aria-label='Edit entry'
+                      aria-label='エントリを編集'
                       onClick={() => setAutomationFormData(automations[automationId])}
                     >
                       <IoPencil />
                     </IconButton>
                     <IconButton
                       variant='ghosted-destructive'
-                      aria-label='Delete entry'
+                      aria-label='エントリを削除'
                       onClick={() => handleDelete(automationId)}
                     >
                       <IoTrash />

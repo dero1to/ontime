@@ -69,21 +69,21 @@ export default function ViewSettings() {
     >
       <Panel.Card>
         <Panel.SubHeader>
-          View settings
+          ビュー設定
           <Panel.InlineElements>
             <Button disabled={!isDirty} variant='ghosted' onClick={onReset}>
-              Revert to saved
+              元に戻す
             </Button>
             <Button type='submit' loading={isSubmitting} disabled={!isDirty} variant='primary'>
-              Save
+              保存
             </Button>
           </Panel.InlineElements>
         </Panel.SubHeader>
         <Panel.Divider />
         <Info>
-          You can customise the styles applied to Ontime views by providing overriding CSS rules.
+          OntimeビューにカスタムCSSルールを適用してスタイルを上書きできます。
           <br />
-          <ExternalLink href={cssOverrideDocsUrl}>See the docs</ExternalLink>
+          <ExternalLink href={cssOverrideDocsUrl}>ドキュメントを見る</ExternalLink>
         </Info>
         <Panel.Section>
           <Panel.Loader isLoading={status === 'pending'} />
@@ -92,8 +92,8 @@ export default function ViewSettings() {
             <CodeEditorModal isOpen={isCodeEditorOpen} onClose={codeEditorHandler.close} />
             <Panel.ListItem>
               <Panel.Field
-                title='Override CSS styles'
-                description='Enables overriding view styles with custom stylesheet'
+                title='CSSスタイルの上書き'
+                description='カスタムスタイルシートでビューのスタイルを上書きします'
               />
               <Switch
                 size='large'
@@ -101,21 +101,21 @@ export default function ViewSettings() {
                 onCheckedChange={(value: boolean) => setValue('overrideStyles', value, { shouldDirty: true })}
               />
               <Button onClick={codeEditorHandler.open} disabled={isSubmitting}>
-                Edit CSS override
+                CSS上書きを編集
               </Button>
             </Panel.ListItem>
           </Panel.ListGroup>
           <Panel.ListGroup>
             <Panel.ListItem>
-              <Panel.Field title='Timer colour' description='Default colour of a running timer' />
+              <Panel.Field title='タイマーの色' description='実行中タイマーのデフォルト色' />
               <SwatchPickerRHF name='normalColor' control={control} />
             </Panel.ListItem>
             <Panel.ListItem>
-              <Panel.Field title='Warning colour' description='Colour of a running timer in warning mode' />
+              <Panel.Field title='警告の色' description='警告モード時のタイマーの色' />
               <SwatchPickerRHF name='warningColor' control={control} />
             </Panel.ListItem>
             <Panel.ListItem>
-              <Panel.Field title='Danger colour' description='Colour of a running timer in danger mode' />
+              <Panel.Field title='危険の色' description='危険モード時のタイマーの色' />
               <SwatchPickerRHF name='dangerColor' control={control} />
             </Panel.ListItem>
           </Panel.ListGroup>

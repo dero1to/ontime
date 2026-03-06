@@ -50,20 +50,20 @@ export default function CustomFieldSettings() {
     <Panel.Section>
       <Panel.Card>
         <Panel.SubHeader>
-          Custom fields
+          カスタムフィールド
           <Button onClick={handleInitiateCreate}>
-            New <IoAdd />
+            新規 <IoAdd />
           </Button>
         </Panel.SubHeader>
         <Panel.Divider />
         <Panel.Section>
           <Info>
-            Custom fields allow for additional information to be added to an event.
+            カスタムフィールドを使用してイベントに追加情報を付与できます。
             <br />
             <br />
-            To use custom fields as a data source in an{' '}
-            <AppLink search='settings=automation__automations'>Automation</AppLink>, please note the generated key.
-            <ExternalLink href={customFieldsDocsUrl}>See the docs</ExternalLink>
+            カスタムフィールドを
+            <AppLink search='settings=automation__automations'>オートメーション</AppLink>のデータソースとして使用するには、生成されたキーを確認してください。
+            <ExternalLink href={customFieldsDocsUrl}>ドキュメントを見る</ExternalLink>
           </Info>
         </Panel.Section>
         <Panel.Section>
@@ -71,10 +71,10 @@ export default function CustomFieldSettings() {
           <Panel.Table>
             <thead>
               <tr>
-                <th>Colour</th>
-                <th>Type</th>
-                <th>Name</th>
-                <th>Key (used in Automations)</th>
+                <th>色</th>
+                <th>タイプ</th>
+                <th>名前</th>
+                <th>キー（オートメーションで使用）</th>
                 <th />
               </tr>
             </thead>

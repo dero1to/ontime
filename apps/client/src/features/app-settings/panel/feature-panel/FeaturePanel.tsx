@@ -15,17 +15,17 @@ export default function FeaturePanel({ location }: PanelBaseProps) {
 
   return (
     <>
-      <Panel.Header>Sharing and reporting</Panel.Header>
+      <Panel.Header>共有とレポート</Panel.Header>
       <div ref={presetsRef}>
         <URLPresets />
       </div>
       <div ref={linkRef}>
         <Panel.Section>
           <Panel.Card>
-            <Panel.SubHeader>Share Ontime Link</Panel.SubHeader>
+            <Panel.SubHeader>Ontimeリンクを共有</Panel.SubHeader>
             {!isOntimeCloud && (
               <>
-                <Panel.Paragraph>Ontime is streaming on the following network interfaces</Panel.Paragraph>
+                <Panel.Paragraph>Ontimeは以下のネットワークインターフェースで配信中です</Panel.Paragraph>
                 <InfoNif />
               </>
             )}
