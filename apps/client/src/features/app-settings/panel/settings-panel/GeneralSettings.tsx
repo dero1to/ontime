@@ -152,6 +152,7 @@ export default function GeneralSettings() {
                     { value: 'fr', label: 'French' },
                     { value: 'de', label: 'German' },
                     { value: 'it', label: 'Italian' },
+                    { value: 'ja', label: 'Japanese' },
                     { value: 'pt', label: 'Portuguese' },
                     { value: 'es', label: 'Spanish' },
                     { value: 'custom', label: 'Custom' },

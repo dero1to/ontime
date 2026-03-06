@@ -104,6 +104,7 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
                   { value: 'fr', label: 'French' },
                   { value: 'de', label: 'German' },
                   { value: 'it', label: 'Italian' },
+                  { value: 'ja', label: 'Japanese' },
                   { value: 'pt', label: 'Portuguese' },
                   { value: 'es', label: 'Spanish' },
                 ]}
