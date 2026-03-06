@@ -17,7 +17,7 @@ export default function NetworkLogPanel({ location }: PanelBaseProps) {
 
   return (
     <>
-      <Panel.Header>Network</Panel.Header>
+      <Panel.Header>ネットワーク</Panel.Header>
       {isDocker && (
         <Panel.Section>
           <OntimeCloudStats />
@@ -53,8 +53,8 @@ function OntimeCloudStats() {
 
   return (
     <Panel.SubHeader>
-      Ontime cloud
-      <Panel.Description>Current ping: {ping}ms</Panel.Description>
+      Ontimeクラウド
+      <Panel.Description>現在のping: {ping}ms</Panel.Description>
     </Panel.SubHeader>
   );
 }

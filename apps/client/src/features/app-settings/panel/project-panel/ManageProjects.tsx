@@ -42,7 +42,7 @@ export default function ManageProjects() {
       await uploadProjectFile(selectedFile);
     } catch (error) {
       const errorMessage = maybeAxiosError(error);
-      setError(`Error uploading file: ${errorMessage}`);
+      setError(`ファイルのアップロードエラー: ${errorMessage}`);
     } finally {
       await invalidateAllCaches();
     }
@@ -67,17 +67,17 @@ export default function ManageProjects() {
       />
       <Panel.Card>
         <Panel.SubHeader>
-          Manage projects
+          プロジェクト管理
           <Panel.InlineElements>
             <Button
               onClick={handleSelectFile}
               disabled={Boolean(loading) || isCreatingProject}
               loading={loading === 'import'}
             >
-              Import
+              インポート
             </Button>
             <Button onClick={handleToggleCreate} disabled={Boolean(loading) || isCreatingProject}>
-              New <IoAdd />
+              新規 <IoAdd />
             </Button>
           </Panel.InlineElements>
         </Panel.SubHeader>

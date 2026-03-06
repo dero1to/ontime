@@ -75,10 +75,10 @@ export default function GeneralSettings() {
       >
         <Panel.Card>
           <Panel.SubHeader>
-            General settings
+            一般設定
             <Panel.InlineElements>
               <Button disabled={!isDirty || isSubmitting} variant='ghosted' onClick={onReset}>
-                Revert to saved
+                元に戻す
               </Button>
               <Button
                 type='submit'
@@ -88,36 +88,36 @@ export default function GeneralSettings() {
                 disabled={disableSubmit}
                 variant='primary'
               >
-                Save
+                保存
               </Button>
             </Panel.InlineElements>
           </Panel.SubHeader>
           {submitError && <Panel.Error>{submitError}</Panel.Error>}
           <Panel.Divider />
           <Panel.Section>
-            <Info>Changes to the time format and views language do not affect the editor view</Info>
+            <Info>時刻形式とビュー言語の変更はエディタービューには影響しません</Info>
             <Panel.Loader isLoading={isLoading} />
             <Panel.ListGroup>
               <Panel.ListItem>
                 <Panel.Field
-                  title='Editor pin code'
-                  description='Protect the editor view with a pin code'
+                  title='エディター暗証番号'
+                  description='エディタービューを暗証番号で保護します'
                   error={errors.editorKey?.message}
                 />
                 <GeneralPinInput register={register} formName='editorKey' disabled={disableInputs} />
               </Panel.ListItem>
               <Panel.ListItem>
                 <Panel.Field
-                  title='Operator pin code'
-                  description='Protect the operator and cuesheet views with a pin code'
+                  title='オペレーター暗証番号'
+                  description='オペレーターとキューシートビューを暗証番号で保護します'
                   error={errors.operatorKey?.message}
                 />
                 <GeneralPinInput register={register} formName='operatorKey' disabled={disableInputs} />
               </Panel.ListItem>
               <Panel.ListItem>
                 <Panel.Field
-                  title='Time format'
-                  description='Default time format to show in views 12 / 24 hours'
+                  title='時刻形式'
+                  description='ビューに表示するデフォルトの時刻形式（12時間 / 24時間）'
                   error={errors.timeFormat?.message}
                 />
                 <Select
@@ -128,15 +128,15 @@ export default function GeneralSettings() {
                   }}
                   defaultValue='24'
                   options={[
-                    { value: '12', label: '12 hours 11:00:10 PM' },
-                    { value: '24', label: '24 hours 23:00:10' },
+                    { value: '12', label: '12時間制 11:00:10 PM' },
+                    { value: '24', label: '24時間制 23:00:10' },
                   ]}
                 />
               </Panel.ListItem>
               <Panel.ListItem>
                 <Panel.Field
-                  title='Views language'
-                  description='Language to be displayed in views'
+                  title='ビュー言語'
+                  description='ビューに表示する言語'
                   error={errors.language?.message}
                 />
                 <Select
@@ -152,12 +152,13 @@ export default function GeneralSettings() {
                     { value: 'fr', label: 'French' },
                     { value: 'de', label: 'German' },
                     { value: 'it', label: 'Italian' },
+                    { value: 'ja', label: 'Japanese' },
                     { value: 'pt', label: 'Portuguese' },
                     { value: 'es', label: 'Spanish' },
                     { value: 'custom', label: 'Custom' },
                   ]}
                 />
-                <Button onClick={handler.open}>Edit custom translation</Button>
+                <Button onClick={handler.open}>カスタム翻訳を編集</Button>
               </Panel.ListItem>
             </Panel.ListGroup>
           </Panel.Section>

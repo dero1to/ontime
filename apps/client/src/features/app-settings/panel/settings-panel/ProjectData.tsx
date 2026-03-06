@@ -113,13 +113,13 @@ export default function ProjectData() {
     <Panel.Section as='form' onSubmit={handleSubmit(onSubmit)} onKeyDown={(event) => preventEscape(event, onReset)}>
       <Panel.Card>
         <Panel.SubHeader>
-          Project data
+          プロジェクトデータ
           <Panel.InlineElements>
             <Button onClick={onReset} disabled={isSubmitting || !isDirty}>
-              Revert to saved
+              元に戻す
             </Button>
             <Button variant='primary' type='submit' disabled={!isDirty || !isValid} loading={isSubmitting}>
-              Save
+              保存
             </Button>
           </Panel.InlineElements>
         </Panel.SubHeader>
@@ -127,17 +127,17 @@ export default function ProjectData() {
         <Panel.Section>
           <Panel.Loader isLoading={isLoading} />
           <label>
-            Project title
+            プロジェクトタイトル
             <Input
               fluid
               maxLength={50}
-              placeholder='Project title is shown in production views'
+              placeholder='プロジェクトタイトルはプロダクションビューに表示されます'
               {...register('title')}
             />
           </label>
           <Panel.Section style={{ marginTop: 0 }}>
             <label>
-              Project logo
+              プロジェクトロゴ
               <input
                 type='file'
                 style={{ display: 'none' }}
@@ -159,13 +159,13 @@ export default function ProjectData() {
                       onClick={handleDeleteLogo}
                     >
                       <IoTrash />
-                      Delete
+                      削除
                     </Button>
                   </>
                 ) : (
                   <Button disabled={isSubmitting} onClick={handleClickUpload} type='button'>
                     <IoDownloadOutline />
-                    Upload logo
+                    ロゴをアップロード
                   </Button>
                 )}
                 {errors?.logo?.message && <Panel.Error>{errors.logo.message}</Panel.Error>}
@@ -174,28 +174,28 @@ export default function ProjectData() {
           </Panel.Section>
 
           <label>
-            Project description
+            プロジェクト説明
             <Input fluid maxLength={100} placeholder='Euro Love, Malmö 2024' {...register('description')} />
           </label>
           <label>
-            Project info
+            プロジェクト情報
             <Textarea
               fluid
               maxLength={150}
-              placeholder='Wi-Fi password: 1234'
+              placeholder='Wi-Fiパスワード: 1234'
               resize='vertical'
               {...register('info')}
             />
           </label>
           <label>
-            Project QR code URL
+            プロジェクトQRコードURL
             <Input fluid placeholder={documentationUrl} {...register('url')} />
           </label>
           <Panel.Section style={{ marginTop: 0 }}>
             <Panel.ListItem>
-              <Panel.Field title='Custom data' description='' />
+              <Panel.Field title='カスタムデータ' description='' />
               <Button onClick={handleAddCustom}>
-                Add <IoAdd />
+                追加 <IoAdd />
               </Button>
             </Panel.ListItem>
             {fields.length > 0 &&
@@ -210,43 +210,43 @@ export default function ProjectData() {
                   <div key={field.id} className={style.customDataItem}>
                     <div className={style.titleRow}>
                       <label className={style.title}>
-                        Title
+                        タイトル
                         <Input
                           fluid
                           defaultValue={field.title}
-                          placeholder='Title of your custom data'
+                          placeholder='カスタムデータのタイトル'
                           {...register(`custom.${idx}.title`, {
-                            required: { value: true, message: 'Field cannot be empty' },
+                            required: { value: true, message: 'フィールドは空にできません' },
                           })}
                         />
                       </label>
                       <Button variant='subtle-destructive' onClick={() => remove(idx)}>
                         <IoTrash />
-                        Delete
+                        削除
                       </Button>
                     </div>
                     {rowErrors?.title?.message && <Panel.Error>{rowErrors.title.message}</Panel.Error>}
                     <label>
-                      Text
+                      テキスト
                       <Textarea
                         fluid
                         rows={3}
                         resize='vertical'
                         defaultValue={field.value}
-                        placeholder='Text of your custom data'
+                        placeholder='カスタムデータのテキスト'
                         {...register(`custom.${idx}.value`, {
-                          required: { value: true, message: 'Field cannot be empty' },
+                          required: { value: true, message: 'フィールドは空にできません' },
                         })}
                       />
                       {rowErrors?.value?.message && <Panel.Error>{rowErrors.value.message}</Panel.Error>}
                     </label>
                     <label>
-                      Image URL (optional)
+                      画像URL（任意）
                       <div className={style.customImage}>
                         <Input
                           fluid
                           defaultValue={field.url}
-                          placeholder='Paste image URL (optional)'
+                          placeholder='画像URLを貼り付け（任意）'
                           {...register(`custom.${idx}.url`)}
                         />
                         <div className={style.imageContainer}>

@@ -193,16 +193,16 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
       className={style.outerColumn}
       onKeyDown={(event) => preventEscape(event, onClose)}
     >
-      <Panel.SubHeader>{isEdit ? 'Edit automation' : 'Create automation'}</Panel.SubHeader>
+      <Panel.SubHeader>{isEdit ? 'オートメーションを編集' : 'オートメーションを作成'}</Panel.SubHeader>
       <div className={style.innerSection}>
-        <h3>Automation options</h3>
+        <h3>オートメーションオプション</h3>
         <div className={style.titleSection}>
           <label>
-            Title
+            タイトル
             <Input
-              {...register('title', { required: { value: true, message: 'Required field' } })}
+              {...register('title', { required: { value: true, message: '必須フィールドです' } })}
               fluid
-              placeholder='Load preset'
+              placeholder='プリセットを読み込む'
             />
           </label>
           <Panel.Error>{errors.title?.message}</Panel.Error>
@@ -210,17 +210,17 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
       </div>
 
       <div className={style.innerSection}>
-        <h3>Filters (optional)</h3>
+        <h3>フィルター（任意）</h3>
         <div className={style.ruleSection}>
           <label>
-            Trigger outputs if
+            出力トリガー条件
             <RadioGroup
               orientation='horizontal'
               value={watch('filterRule')}
               onValueChange={(value) => setValue('filterRule', value, { shouldDirty: true })}
               items={[
-                { value: 'all', label: 'All filters pass' },
-                { value: 'any', label: 'Any filter passes' },
+                { value: 'all', label: 'すべてのフィルターが一致' },
+                { value: 'any', label: 'いずれかのフィルターが一致' },
               ]}
             />
           </label>
@@ -229,7 +229,7 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
             return (
               <div key={key} className={style.filterSection}>
                 <label>
-                  Runtime data source
+                  ランタイムデータソース
                   <Select<string | null>
                     // need to normalize '' to null for the Select to show the placeholder
                     value={watch(`filters.${index}.field`) || null}
@@ -247,7 +247,7 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                   <Panel.Error>{errors.filters?.[index]?.field?.message}</Panel.Error>
                 </label>
                 <label>
-                  Matching condition
+                  一致条件
                   <Select
                     value={watch(`filters.${index}.operator`)}
                     onValueChange={(value: string | null) => {
@@ -259,17 +259,17 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                       );
                     }}
                     options={[
-                      { value: 'equals', label: 'equals' },
-                      { value: 'not_equals', label: 'not equals' },
-                      { value: 'contains', label: 'contains' },
+                      { value: 'equals', label: '等しい' },
+                      { value: 'not_equals', label: '等しくない' },
+                      { value: 'contains', label: '含む' },
                     ]}
                     aria-label='Operator'
                   />
                   <Panel.Error>{errors.filters?.[index]?.operator?.message}</Panel.Error>
                 </label>
                 <label>
-                  Value to match
-                  <Input {...register(`filters.${index}.value`)} fluid placeholder='<empty / no value>' />
+                  一致する値
+                  <Input {...register(`filters.${index}.value`)} fluid placeholder='<空 / 値なし>' />
                 </label>
                 <div>
                   <span>&nbsp;</span>
@@ -284,18 +284,18 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
           })}
           <div>
             <Button type='submit' onClick={handleAddNewFilter}>
-              Add filter <IoAdd />
+              フィルターを追加 <IoAdd />
             </Button>
           </div>
         </div>
       </div>
 
       <div className={style.innerColumn}>
-        <h3>Outputs</h3>
+        <h3>出力</h3>
         <Info>
-          Automation outputs can be used to send data from Ontime to external software <br />
-          or to change properties of Ontime itself.
-          <ExternalLink href={integrationsDocsUrl}>See the documentation for templates</ExternalLink>
+          オートメーション出力はOntimeから外部ソフトウェアにデータを送信したり、<br />
+          Ontime自体のプロパティを変更するために使用できます。
+          <ExternalLink href={integrationsDocsUrl}>テンプレートのドキュメントを見る</ExternalLink>
         </Info>
 
         {fieldOutputs.map((output, index) => {
@@ -314,10 +314,10 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                 <Tag>OSC</Tag>
                 <div className={style.oscSection}>
                   <label>
-                    Target IP
+                    ターゲットIP
                     <Input
                       {...register(`outputs.${index}.targetIP`, {
-                        required: { value: true, message: 'Required field' },
+                        required: { value: true, message: '必須フィールドです' },
                       })}
                       fluid
                       placeholder='127.0.0.1'
@@ -325,13 +325,13 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                     <Panel.Error>{rowErrors?.targetIP?.message}</Panel.Error>
                   </label>
                   <label>
-                    Target Port
+                    ターゲットポート
                     <Input
                       {...register(`outputs.${index}.targetPort`, {
-                        required: { value: true, message: 'Required field' },
+                        required: { value: true, message: '必須フィールドです' },
                         setValueAs: (value) => (value === '' ? 0 : Number(value)),
-                        max: { value: 65535, message: 'Port must be within range 1024 - 65535' },
-                        min: { value: 1024, message: 'Port must be within range 1024 - 65535' },
+                        max: { value: 65535, message: 'ポートは1024～65535の範囲で指定してください' },
+                        min: { value: 1024, message: 'ポートは1024～65535の範囲で指定してください' },
                       })}
                       fluid
                       type='number'
@@ -341,12 +341,12 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                     <Panel.Error>{rowErrors?.targetPort?.message}</Panel.Error>
                   </label>
                   <label>
-                    Address
+                    アドレス
                     <Input {...register(`outputs.${index}.address`)} fluid placeholder='/cue/start' />
                     <Panel.Error>{rowErrors?.address?.message}</Panel.Error>
                   </label>
                   <label>
-                    Arguments
+                    引数
                     <TemplateInput {...register(`outputs.${index}.args`)} value={output.args} placeholder='1' />
                     <Panel.Error>{rowErrors?.args?.message}</Panel.Error>
                   </label>
@@ -354,9 +354,9 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                     <span>&nbsp;</span>
                     <Panel.InlineElements relation='inner'>
                       <Button variant='ghosted-white' onClick={() => handleTestOSCOutput(index)}>
-                        Test
+                        テスト
                       </Button>
-                      <IconButton aria-label='Delete' variant='ghosted-destructive' onClick={() => removeOutput(index)}>
+                      <IconButton aria-label='削除' variant='ghosted-destructive' onClick={() => removeOutput(index)}>
                         <IoTrash />
                       </IconButton>
                     </Panel.InlineElements>
@@ -376,13 +376,13 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                 <Tag>HTTP</Tag>
                 <div className={style.httpSection}>
                   <label>
-                    Target URL
+                    ターゲットURL
                     <Input
                       {...register(`outputs.${index}.url`, {
-                        required: { value: true, message: 'Required field' },
+                        required: { value: true, message: '必須フィールドです' },
                         pattern: {
                           value: startsWithHttp,
-                          message: 'HTTP messages should target http:// or https://',
+                          message: 'HTTPメッセージはhttp://またはhttps://を対象にしてください',
                         },
                       })}
                       fluid
@@ -394,9 +394,9 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                     <span>&nbsp;</span>
                     <Panel.InlineElements relation='inner'>
                       <Button variant='ghosted-white' onClick={() => handleTestHTTPOutput(index)}>
-                        Test
+                        テスト
                       </Button>
-                      <IconButton aria-label='Delete' variant='ghosted-destructive' onClick={() => removeOutput(index)}>
+                      <IconButton aria-label='削除' variant='ghosted-destructive' onClick={() => removeOutput(index)}>
                         <IoTrash />
                       </IconButton>
                     </Panel.InlineElements>
@@ -418,7 +418,7 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
               | undefined;
             return (
               <div key={output.id} className={style.outputCard}>
-                <Tag>Ontime action</Tag>
+                <Tag>Ontimeアクション</Tag>
                 <OntimeActionForm
                   value={output.action}
                   index={index}
@@ -430,9 +430,9 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
                   <span>&nbsp;</span>
                   <Panel.InlineElements relation='inner'>
                     <Button variant='ghosted-white' onClick={() => handleTestOntimeAction(index)}>
-                      Test
+                      テスト
                     </Button>
-                    <IconButton aria-label='Delete' variant='ghosted-destructive' onClick={() => removeOutput(index)}>
+                    <IconButton aria-label='削除' variant='ghosted-destructive' onClick={() => removeOutput(index)}>
                       <IoTrash />
                     </IconButton>
                   </Panel.InlineElements>
@@ -452,16 +452,16 @@ export default function AutomationForm({ automation, onClose }: AutomationFormPr
             HTTP <IoAdd />
           </Button>
           <Button onClick={handleAddnewOntimeAction}>
-            Ontime action <IoAdd />
+            Ontimeアクション <IoAdd />
           </Button>
         </Panel.InlineElements>
       </div>
 
       <Panel.InlineElements align='end'>
         {errors?.root && <Panel.Error>{errors.root.message}</Panel.Error>}
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose}>キャンセル</Button>
         <Button variant='primary' type='submit' disabled={!canSubmit} loading={isSubmitting}>
-          Save
+          保存
         </Button>
       </Panel.InlineElements>
     </Panel.Indent>

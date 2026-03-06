@@ -60,10 +60,10 @@ export default function AutomationSettingsForm({
   return (
     <Panel.Card>
       <Panel.SubHeader>
-        Automation settings
+        オートメーション設定
         <Panel.InlineElements>
           <Button variant='ghosted' onClick={onReset} disabled={!canSubmit}>
-            Revert to saved
+            元に戻す
           </Button>
           <Button
             variant='primary'
@@ -72,7 +72,7 @@ export default function AutomationSettingsForm({
             disabled={!canSubmit}
             loading={isSubmitting}
           >
-            Save
+            保存
           </Button>
         </Panel.InlineElements>
       </Panel.SubHeader>
@@ -82,11 +82,11 @@ export default function AutomationSettingsForm({
 
       <Panel.Section>
         <Info>
-          <p>Control Ontime and share its data with external systems in your workflow.</p>
-          <p>- Automations allow Ontime to send its data on lifecycle triggers.</p>
-          <p>- OSC Input tells Ontime to listen to messages on the specific port.</p>
+          <p>Ontimeを制御し、ワークフロー内の外部システムとデータを共有します。</p>
+          <p>- オートメーションはライフサイクルトリガーでOntimeのデータを送信できます。</p>
+          <p>- OSC入力はOntimeに指定ポートでメッセージを受信させます。</p>
           <br />
-          <ExternalLink href={oscApiDocsUrl}>See the docs</ExternalLink>
+          <ExternalLink href={oscApiDocsUrl}>ドキュメントを見る</ExternalLink>
         </Info>
       </Panel.Section>
 
@@ -98,12 +98,12 @@ export default function AutomationSettingsForm({
       >
         <Panel.Loader isLoading={false} />
 
-        <Panel.Title>Automation</Panel.Title>
+        <Panel.Title>オートメーション</Panel.Title>
         <Panel.ListGroup>
           <Panel.ListItem>
             <Panel.Field
-              title='Enable automations'
-              description='Allow Ontime to send messages on lifecycle triggers'
+              title='オートメーションを有効化'
+              description='ライフサイクルトリガーでOntimeがメッセージを送信することを許可'
               error={errors.enabledAutomations?.message}
             />
             <Switch
@@ -116,14 +116,14 @@ export default function AutomationSettingsForm({
           </Panel.ListItem>
         </Panel.ListGroup>
 
-        <Panel.Title>OSC Input</Panel.Title>
+        <Panel.Title>OSC入力</Panel.Title>
 
         <Panel.ListGroup>
-          {isOntimeCloud && <Info>For security reasons OSC integrations are not available in the cloud service.</Info>}
+          {isOntimeCloud && <Info>セキュリティ上の理由により、OSC連携はクラウドサービスでは利用できません。</Info>}
           <Panel.ListItem>
             <Panel.Field
-              title='OSC input'
-              description='Allow control of Ontime through OSC'
+              title='OSC入力'
+              description='OSCを通じたOntimeの制御を許可'
               error={errors.enabledOscIn?.message}
             />
             <Switch
@@ -136,8 +136,8 @@ export default function AutomationSettingsForm({
           </Panel.ListItem>
           <Panel.ListItem>
             <Panel.Field
-              title='Listen on port'
-              description='Port for incoming OSC. Default: 8888'
+              title='受信ポート'
+              description='OSC受信用ポート。デフォルト: 8888'
               error={errors.oscPortIn?.message}
             />
             <Input
@@ -148,12 +148,12 @@ export default function AutomationSettingsForm({
               type='number'
               fluid
               {...register('oscPortIn', {
-                required: { value: true, message: 'Required field' },
-                max: { value: 65535, message: 'Port must be within range 1024 - 65535' },
-                min: { value: 1024, message: 'Port must be within range 1024 - 65535' },
+                required: { value: true, message: '必須フィールドです' },
+                max: { value: 65535, message: 'ポートは1024～65535の範囲で指定してください' },
+                min: { value: 1024, message: 'ポートは1024～65535の範囲で指定してください' },
                 pattern: {
                   value: isOnlyNumbers,
-                  message: 'Value should be numeric',
+                  message: '数値を入力してください',
                 },
               })}
             />

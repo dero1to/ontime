@@ -29,19 +29,19 @@ export function RenameClientModal({ id, name: currentName = '', isOpen, onClose 
   return (
     <Dialog
       isOpen={isOpen}
-      title={`Rename Client: ${currentName}`}
+      title={`クライアント名変更: ${currentName}`}
       showCloseButton
       onClose={onClose}
       bodyElements={
-        <Input height='large' placeholder='New name' value={name} onChange={(event) => setName(event.target.value)} />
+        <Input height='large' placeholder='新しい名前' value={name} onChange={(event) => setName(event.target.value)} />
       }
       footerElements={
         <>
           <Button variant='subtle' size='large' onClick={onClose}>
-            Cancel
+            キャンセル
           </Button>
           <Button variant='primary' size='large' onClick={handleRename} disabled={!canSubmit}>
-            Submit
+            送信
           </Button>
         </>
       }

@@ -14,80 +14,80 @@ export type SettingsOption = {
 const staticOptions = [
   {
     id: 'settings',
-    label: 'Settings',
+    label: '設定',
     secondary: [
-      { id: 'settings__data', label: 'Project data' },
-      { id: 'settings__general', label: 'General settings' },
-      { id: 'settings__view', label: 'View settings' },
-      { id: 'settings__port', label: 'Server Port' },
+      { id: 'settings__data', label: 'プロジェクトデータ' },
+      { id: 'settings__general', label: '一般設定' },
+      { id: 'settings__view', label: 'ビュー設定' },
+      { id: 'settings__port', label: 'サーバーポート' },
     ],
   },
   {
     id: 'project',
-    label: 'Project',
+    label: 'プロジェクト',
     split: true,
     secondary: [
-      { id: 'project__create', label: 'Create...' },
-      { id: 'project__list', label: 'Manage projects' },
+      { id: 'project__create', label: '作成...' },
+      { id: 'project__list', label: 'プロジェクト管理' },
     ],
   },
   {
     id: 'manage',
-    label: 'Project settings',
+    label: 'プロジェクト設定',
     secondary: [
-      { id: 'manage__defaults', label: 'Rundown defaults' },
-      { id: 'manage__custom', label: 'Custom fields' },
-      { id: 'manage__rundowns', label: 'Manage rundowns' },
-      { id: 'manage__sheets', label: 'Import spreadsheet' },
-      { id: 'manage__sheets', label: 'Sync with Google Sheet' },
+      { id: 'manage__defaults', label: 'ランダウンのデフォルト' },
+      { id: 'manage__custom', label: 'カスタムフィールド' },
+      { id: 'manage__rundowns', label: 'ランダウン管理' },
+      { id: 'manage__sheets', label: 'スプレッドシートをインポート' },
+      { id: 'manage__sheets', label: 'Googleシートと同期' },
     ],
   },
   {
     id: 'automation',
-    label: 'Automation',
+    label: 'オートメーション',
     split: true,
     secondary: [
-      { id: 'automation__settings', label: 'Automation settings' },
-      { id: 'automation__automations', label: 'Manage automations' },
-      { id: 'automation__triggers', label: 'Manage triggers' },
+      { id: 'automation__settings', label: 'オートメーション設定' },
+      { id: 'automation__automations', label: 'オートメーション管理' },
+      { id: 'automation__triggers', label: 'トリガー管理' },
     ],
   },
   {
     id: 'sharing',
-    label: 'Sharing and reporting',
+    label: '共有とレポート',
     split: true,
     secondary: [
-      { id: 'sharing__presets', label: 'URL Presets' },
+      { id: 'sharing__presets', label: 'URLプリセット' },
       {
         id: 'sharing__link',
-        label: 'Share link',
+        label: 'リンクを共有',
       },
-      { id: 'sharing__report', label: 'Runtime report' },
+      { id: 'sharing__report', label: 'ランタイムレポート' },
     ],
   },
   {
     id: 'network',
-    label: 'Network',
+    label: 'ネットワーク',
     split: true,
     secondary: [
       {
         id: 'network__log',
-        label: 'Event log',
+        label: 'イベントログ',
       },
       {
         id: 'network__clients',
-        label: 'Manage clients',
+        label: 'クライアント管理',
       },
     ],
   },
   {
     id: 'about',
-    label: 'About',
+    label: 'このアプリについて',
     split: true,
   },
   {
     id: 'shutdown',
-    label: 'Shutdown',
+    label: 'シャットダウン',
     split: true,
   },
 ] as const;
@@ -112,7 +112,7 @@ export function useAppSettingsMenu() {
               : [...option.secondary]
             : undefined,
         // if there is an update then highlight the about setting
-        highlight: option.id === 'about' && data.hasUpdates ? 'New version available' : undefined,
+        highlight: option.id === 'about' && data.hasUpdates ? '新しいバージョンが利用可能' : undefined,
       })),
     [data],
   );

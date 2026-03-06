@@ -58,7 +58,7 @@ export default function ProjectListItem({
       setSubmitError(null);
       try {
         if (!values.filename) {
-          setSubmitError('Filename cannot be blank');
+          setSubmitError('ファイル名は空にできません');
           return;
         }
         const action = actionType === 'rename' ? renameProject : duplicateProject;
@@ -136,7 +136,7 @@ export default function ProjectListItem({
         ) : (
           <>
             <td className={style.containCell}>{filename}</td>
-            <td>{current ? 'Currently loaded' : new Date(updatedAt).toLocaleString()}</td>
+            <td>{current ? '読み込み中' : new Date(updatedAt).toLocaleString()}</td>
             <td>
               <ActionMenu
                 current={current}
@@ -194,22 +194,22 @@ function ActionMenu(props: ActionMenuProps) {
         {
           type: 'item',
           icon: IoDownloadOutline,
-          label: 'Load',
+          label: '読み込む',
           onClick: () => onLoad(filename),
           disabled: current,
         },
         {
           type: 'item',
           icon: IoDownloadOutline,
-          label: 'Partial Load',
+          label: '部分読み込み',
           onClick: () => onMerge(filename),
           disabled: current,
         },
-        { type: 'item', icon: IoPencilOutline, label: 'Rename', onClick: handleRename },
-        { type: 'item', icon: IoCopyOutline, label: 'Duplicate', onClick: handleDuplicate },
-        { type: 'item', icon: IoDocumentOutline, label: 'Download', onClick: handleDownload },
+        { type: 'item', icon: IoPencilOutline, label: '名前変更', onClick: handleRename },
+        { type: 'item', icon: IoCopyOutline, label: '複製', onClick: handleDuplicate },
+        { type: 'item', icon: IoDocumentOutline, label: 'ダウンロード', onClick: handleDownload },
         { type: 'divider' },
-        { type: 'item', icon: IoTrash, label: 'Delete', onClick: () => onDelete(filename), disabled: current },
+        { type: 'item', icon: IoTrash, label: '削除', onClick: () => onDelete(filename), disabled: current },
       ]}
     >
       <IoEllipsisHorizontal />

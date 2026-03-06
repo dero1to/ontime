@@ -34,21 +34,21 @@ export default function URLPresets() {
     <Panel.Section>
       <Panel.Card>
         <Panel.SubHeader>
-          URL presets
+          URLプリセット
           <Button onClick={openNewForm}>
-            New <IoAdd />
+            新規 <IoAdd />
           </Button>
         </Panel.SubHeader>
         <Panel.Divider />
         <Panel.Section>
           <Info>
-            URL presets are user pre-defined aliases to Ontime URLs.
+            URLプリセットはOntimeのURLに対するユーザー定義のエイリアスです。
             <br />
-            This URL can contain full configuration including parameters, or simply route to a specific view.
+            パラメータを含む完全な設定URLや、特定のビューへのルーティングが可能です。
             <br />
             <br />
-            The easiest way to get started is to copy an URL from your browser and paste it into the form.
-            <ExternalLink href={urlPresetsDocs}>See the docs</ExternalLink>
+            ブラウザからURLをコピーしてフォームに貼り付けるのが最も簡単な方法です。
+            <ExternalLink href={urlPresetsDocs}>ドキュメントを見る</ExternalLink>
           </Info>
         </Panel.Section>
         <Panel.Section>
@@ -57,9 +57,9 @@ export default function URLPresets() {
           <Panel.Table>
             <thead>
               <tr>
-                <th>Enabled</th>
-                <th>Target view</th>
-                <th>Alias</th>
+                <th>有効</th>
+                <th>対象ビュー</th>
+                <th>エイリアス</th>
                 <th />
               </tr>
             </thead>

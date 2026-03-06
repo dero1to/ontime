@@ -75,10 +75,10 @@ export default function CuesheetTableSettings({
           className={cx([style.group, style.apart])}
         >
           <Toolbar.Button render={<Toggle />} value={AppMode.Run} className={style.radioButton}>
-            Run
+            実行
           </Toolbar.Button>
           <Toolbar.Button render={<Toggle />} value={AppMode.Edit} className={style.radioButton}>
-            Edit
+            編集
           </Toolbar.Button>
         </ToggleGroup>
       )}
@@ -103,7 +103,7 @@ export function ViewSettings({ optionsStore }: ViewSettingsProps) {
           <Toolbar.Button
             render={
               <Button variant='ghosted-white'>
-                <IoOptions /> Settings
+                <IoOptions /> 設定
                 <IoChevronDown />
               </Button>
             }
@@ -113,38 +113,38 @@ export function ViewSettings({ optionsStore }: ViewSettingsProps) {
 
       <PopoverContents align='start' className={style.inline}>
         <div className={style.column}>
-          <Editor.Label className={style.sectionTitle}>Element visibility</Editor.Label>
+          <Editor.Label className={style.sectionTitle}>要素の表示</Editor.Label>
           <Editor.Label className={style.option}>
             <Checkbox
               defaultChecked={options.hideTableSeconds}
               onCheckedChange={(checked) => options.setOption('hideTableSeconds', checked)}
             />
-            Hide seconds in table
+            テーブルの秒を非表示
           </Editor.Label>
           <Editor.Label className={style.option}>
             <Checkbox
               defaultChecked={options.hideIndexColumn}
               onCheckedChange={(checked) => options.setOption('hideIndexColumn', checked)}
             />
-            Hide index column
+            インデックス列を非表示
           </Editor.Label>
         </div>
 
         <div className={style.column}>
-          <Editor.Label className={style.sectionTitle}>Table Behaviour</Editor.Label>
+          <Editor.Label className={style.sectionTitle}>テーブルの動作</Editor.Label>
           <Editor.Label className={style.option}>
             <Checkbox
               defaultChecked={options.showDelayedTimes}
               onCheckedChange={(checked) => options.setOption('showDelayedTimes', checked)}
             />
-            Show delayed times
+            遅延時刻を表示
           </Editor.Label>
           <Editor.Label className={style.option}>
             <Checkbox
               defaultChecked={options.hideDelays}
               onCheckedChange={(checked) => options.setOption('hideDelays', checked)}
             />
-            Hide delay entries
+            遅延エントリを非表示
           </Editor.Label>
         </div>
       </PopoverContents>
@@ -165,7 +165,7 @@ export function ColumnSettings({
           <Toolbar.Button
             render={
               <Button variant='ghosted-white'>
-                <IoBookOutline /> Columns
+                <IoBookOutline /> 列
                 <IoChevronDown />
               </Button>
             }
@@ -174,7 +174,7 @@ export function ColumnSettings({
       />
       <PopoverContents align='start' className={style.inline}>
         <div className={style.column}>
-          <Editor.Label className={style.sectionTitle}>Column visibility</Editor.Label>
+          <Editor.Label className={style.sectionTitle}>列の表示</Editor.Label>
           {columns.map((column) => {
             const columnHeader = column.columnDef.header;
             const visible = column.getIsVisible();
@@ -187,15 +187,15 @@ export function ColumnSettings({
           })}
         </div>
         <div className={style.column}>
-          <Editor.Label className={style.sectionTitle}>Reset Options</Editor.Label>
+          <Editor.Label className={style.sectionTitle}>リセットオプション</Editor.Label>
           <Button size='small' fluid onClick={handleClearToggles}>
-            Show All
+            すべて表示
           </Button>
           <Button size='small' fluid onClick={handleResetResizing}>
-            Reset Resizing
+            サイズ変更をリセット
           </Button>
           <Button size='small' fluid onClick={handleResetReordering}>
-            Reset Reordering
+            並び替えをリセット
           </Button>
         </div>
       </PopoverContents>

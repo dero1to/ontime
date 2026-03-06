@@ -60,23 +60,23 @@ function NavigationMenu({ isOpen, onClose }: NavigationMenuProps) {
           <div className={style.body}>
             {supportsFullscreen && (
               <NavigationMenuItem active={fullscreen} onClick={toggle}>
-                Toggle Fullscreen
+                フルスクリーン切り替え
                 {fullscreen ? <IoContract /> : <IoExpand />}
               </NavigationMenuItem>
             )}
             <NavigationMenuItem active={mirror} onClick={() => toggleMirror()}>
-              Flip Screen
+              画面反転
               <IoSwapVertical />
-              {mirror && <span className={style.note}>Active</span>}
+              {mirror && <span className={style.note}>有効</span>}
             </NavigationMenuItem>
             {canUseWakeLock && (
               <NavigationMenuItem active={keepAwake} onClick={toggleKeepAwake}>
-                Keep Awake
+                スリープ防止
                 <LuCoffee />
-                {keepAwake && <span className={style.note}>Active</span>}
+                {keepAwake && <span className={style.note}>有効</span>}
               </NavigationMenuItem>
             )}
-            <NavigationMenuItem onClick={handlers.open}>Rename Client</NavigationMenuItem>
+            <NavigationMenuItem onClick={handlers.open}>クライアント名変更</NavigationMenuItem>
 
             <hr className={style.separator} />
 
@@ -87,11 +87,11 @@ function NavigationMenu({ isOpen, onClose }: NavigationMenuProps) {
               postAction={isSmallScreen ? onClose : undefined}
             >
               <IoLockClosedOutline />
-              Cuesheet
+              キューシート
             </ClientLink>
             <ClientLink to='op' current={location.pathname === '/op'} postAction={isSmallScreen ? onClose : undefined}>
               <IoLockClosedOutline />
-              Operator
+              オペレーター
             </ClientLink>
 
             <hr className={style.separator} />

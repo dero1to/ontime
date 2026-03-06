@@ -57,7 +57,7 @@ export default function ManageRundowns() {
     try {
       await load(targetRundown);
     } catch (error) {
-      setActionError(`Failed to load rundown. ${maybeAxiosError(error)}`);
+      setActionError(`ランダウンの読み込みに失敗しました。${maybeAxiosError(error)}`);
     } finally {
       loadHandlers.close();
     }
@@ -71,7 +71,7 @@ export default function ManageRundowns() {
     try {
       await duplicate(id);
     } catch (error) {
-      setActionError(`Failed to duplicate rundown. ${maybeAxiosError(error)}`);
+      setActionError(`ランダウンの複製に失敗しました。${maybeAxiosError(error)}`);
     }
   };
 
@@ -80,7 +80,7 @@ export default function ManageRundowns() {
       await rename([id, newTitle]);
       setRenamingRundown(null);
     } catch (error) {
-      setActionError(`Failed to rename rundown. ${maybeAxiosError(error)}`);
+      setActionError(`ランダウンの名前変更に失敗しました。${maybeAxiosError(error)}`);
     }
   };
 
@@ -88,7 +88,7 @@ export default function ManageRundowns() {
     try {
       await remove(targetRundown);
     } catch (error) {
-      setActionError(`Failed to delete rundown. ${maybeAxiosError(error)}`);
+      setActionError(`ランダウンの削除に失敗しました。${maybeAxiosError(error)}`);
     } finally {
       deleteHandlers.close();
     }
@@ -103,7 +103,7 @@ export default function ManageRundowns() {
       <Panel.Section>
         <Panel.Card>
           <Panel.SubHeader>
-            Manage project rundowns
+            プロジェクトランダウン管理
             <Panel.InlineElements>
               <Button
                 onClick={() => {
@@ -111,7 +111,7 @@ export default function ManageRundowns() {
                   newHandlers.open();
                 }}
               >
-                New <IoAdd />
+                新規 <IoAdd />
               </Button>
             </Panel.InlineElements>
           </Panel.SubHeader>
@@ -122,8 +122,8 @@ export default function ManageRundowns() {
             <Panel.Table>
               <thead>
                 <tr>
-                  <th># Entries</th>
-                  <th style={{ width: '100%' }}>Title</th>
+                  <th># エントリ</th>
+                  <th style={{ width: '100%' }}>タイトル</th>
                   <th />
                 </tr>
               </thead>
@@ -150,7 +150,7 @@ export default function ManageRundowns() {
                     <tr key={id} className={cx([isLoaded && style.current])}>
                       <td>{numEntries}</td>
                       <td>
-                        {title} {isLoaded && <Tag>Loaded</Tag>}
+                        {title} {isLoaded && <Tag>読み込み済み</Tag>}
                       </td>
                       <td>
                         <DropdownMenu
@@ -159,33 +159,33 @@ export default function ManageRundowns() {
                             {
                               type: 'item',
                               icon: IoPencilOutline,
-                              label: 'Rename',
+                              label: '名前変更',
                               onClick: () => openRename(id),
                             },
                             {
                               type: 'item',
                               icon: IoDownloadOutline,
-                              label: 'Load',
+                              label: '読み込む',
                               onClick: () => openLoad(id),
                               disabled: isLoaded,
                             },
                             {
                               type: 'item',
                               icon: IoDocumentOutline,
-                              label: 'Download .xlsx',
+                              label: '.xlsxをダウンロード',
                               onClick: () => handleDownloadXlsx(id, title),
                             },
                             {
                               type: 'item',
                               icon: IoDuplicateOutline,
-                              label: 'Duplicate',
+                              label: '複製',
                               onClick: () => submitRundownDuplicate(id),
                             },
                             { type: 'divider' },
                             {
                               type: 'destructive',
                               icon: IoTrash,
-                              label: 'Delete',
+                              label: '削除',
                               onClick: () => openDelete(id),
                               disabled: isLoaded,
                             },
@@ -205,21 +205,21 @@ export default function ManageRundowns() {
       <Dialog
         isOpen={isOpenDelete}
         onClose={deleteHandlers.close}
-        title='Delete rundown'
+        title='ランダウンを削除'
         showBackdrop
         showCloseButton
         bodyElements={
           <>
-            You will lose all data in your rundown. <br /> Are you sure?
+            ランダウンのすべてのデータが失われます。<br />よろしいですか？
           </>
         }
         footerElements={
           <>
             <Button size='large' onClick={deleteHandlers.close}>
-              Cancel
+              キャンセル
             </Button>
             <Button variant='destructive' size='large' onClick={submitRundownDelete}>
-              Delete rundown
+              ランダウンを削除
             </Button>
           </>
         }
@@ -227,21 +227,21 @@ export default function ManageRundowns() {
       <Dialog
         isOpen={isOpenLoad}
         onClose={loadHandlers.close}
-        title='Load rundown'
+        title='ランダウンを読み込む'
         showBackdrop
         showCloseButton
         bodyElements={
           <>
-            The current playback will be stopped. <br /> Are you sure?
+            現在の再生が停止されます。<br />よろしいですか？
           </>
         }
         footerElements={
           <>
             <Button size='large' onClick={loadHandlers.close}>
-              Cancel
+              キャンセル
             </Button>
             <Button variant='primary' size='large' onClick={submitRundownLoad}>
-              Load rundown
+              ランダウンを読み込む
             </Button>
           </>
         }

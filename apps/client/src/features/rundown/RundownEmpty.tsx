@@ -20,13 +20,13 @@ export default function RundownEmpty(props: RundownEmptyProps) {
       <div className={style.inline}>
         <Button onClick={() => handleAddNew(SupportedEntry.Event)} variant='primary' size='large'>
           <IoAdd />
-          Create Event
+          イベントを作成
         </Button>
 
         <Editor.Separator />
 
         <Button onClick={() => handleAddNew(SupportedEntry.Group)} variant='primary' size='large'>
-          <IoAdd /> Create Group
+          <IoAdd /> グループを作成
         </Button>
       </div>
     </div>

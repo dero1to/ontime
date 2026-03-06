@@ -36,7 +36,7 @@ export interface PlaybackControlState {
 
   // Go button configuration
   goAction: () => void;
-  goLabel: 'Start' | 'Next' | 'Finish';
+  goLabel: 'スタート' | '次へ' | '終了';
 }
 
 /**
@@ -87,9 +87,9 @@ function getGoAction(
   playback: Playback,
   selectedEventIndex: number | null,
   isLast: boolean,
-): { action: () => void; label: 'Start' | 'Next' | 'Finish' } {
-  if (playback === Playback.Armed) return { action: setPlayback.start, label: 'Start' };
-  if (isLast) return { action: setPlayback.stop, label: 'Finish' };
-  if (selectedEventIndex === null) return { action: setPlayback.startNext, label: 'Start' };
-  return { action: setPlayback.startNext, label: 'Next' };
+): { action: () => void; label: 'スタート' | '次へ' | '終了' } {
+  if (playback === Playback.Armed) return { action: setPlayback.start, label: 'スタート' };
+  if (isLast) return { action: setPlayback.stop, label: '終了' };
+  if (selectedEventIndex === null) return { action: setPlayback.startNext, label: 'スタート' };
+  return { action: setPlayback.startNext, label: '次へ' };
 }

@@ -59,18 +59,18 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
       onClose={onClose}
       showBackdrop
       showCloseButton
-      title='Create new project...'
+      title='新規プロジェクト作成...'
       bodyElements={
         <form onSubmit={handleSubmit(onSubmit)} id='quick-start'>
           <Panel.ListGroup>
             <Panel.ListItem>
-              <Panel.Field title='Project title' description='Shown as the title in some views' />
-              <Input maxLength={150} placeholder='Project title' fluid {...register('project.title')} />
+              <Panel.Field title='プロジェクトタイトル' description='一部のビューでタイトルとして表示されます' />
+              <Input maxLength={150} placeholder='プロジェクトタイトル' fluid {...register('project.title')} />
             </Panel.ListItem>
             <Panel.ListItem>
               <Panel.Field
-                title='Time format'
-                description='Default time format to show in views 12 / 24 hours (does not affect editor)'
+                title='時刻形式'
+                description='ビューに表示するデフォルトの時刻形式（12/24時間、エディターには影響しません）'
                 error={errors.settings?.timeFormat?.message}
               />
               <Select
@@ -81,15 +81,15 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
                 }}
                 defaultValue='24'
                 options={[
-                  { value: '12', label: '12 hours 11:00:10 PM' },
-                  { value: '24', label: '24 hours 23:00:10' },
+                  { value: '12', label: '12時間制 11:00:10 PM' },
+                  { value: '24', label: '24時間制 23:00:10' },
                 ]}
               />
             </Panel.ListItem>
             <Panel.ListItem>
               <Panel.Field
-                title='Views language'
-                description='Language to be displayed in views'
+                title='ビュー言語'
+                description='ビューに表示する言語'
                 error={errors.settings?.language?.message}
               />
               <Select
@@ -104,6 +104,7 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
                   { value: 'fr', label: 'French' },
                   { value: 'de', label: 'German' },
                   { value: 'it', label: 'Italian' },
+                  { value: 'ja', label: 'Japanese' },
                   { value: 'pt', label: 'Portuguese' },
                   { value: 'es', label: 'Spanish' },
                 ]}
@@ -113,7 +114,7 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
 
           <Panel.ListGroup>
             <Panel.ListItem>
-              <Panel.Field title='Warning time' description='Default threshold for warning time in an event' />
+              <Panel.Field title='警告時間' description='イベントの警告時間のデフォルトしきい値' />
               <TimeInput<'warnTime'>
                 name='warnTime'
                 submitHandler={(_field, value) => setWarnTime(value)}
@@ -122,7 +123,7 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
               />
             </Panel.ListItem>
             <Panel.ListItem>
-              <Panel.Field title='Danger time' description='Default threshold for danger time in an event' />
+              <Panel.Field title='危険時間' description='イベントの危険時間のデフォルトしきい値' />
               <TimeInput<'dangerTime'>
                 name='dangerTime'
                 submitHandler={(_field, value) => setDangerTime(value)}
@@ -137,10 +138,10 @@ export default function QuickStart({ isOpen, onClose }: QuickStartProps) {
         <>
           {errors?.root && <Panel.Error>{errors.root.message}</Panel.Error>}
           <Button variant='ghosted' onClick={onClose} disabled={false}>
-            Cancel
+            キャンセル
           </Button>
           <Button variant='primary' type='submit' form='quick-start' disabled={!isValid} loading={isSubmitting}>
-            Create project
+            プロジェクトを作成
           </Button>
         </>
       }

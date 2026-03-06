@@ -39,7 +39,7 @@ function RundownMenu({ allowNavigation }: RundownMenuProps) {
           items={[
             {
               type: 'item',
-              label: 'Manage Rundowns...',
+              label: 'ランダウン管理...',
               icon: IoList,
               onClick: () => setLocation('manage__rundowns'),
               disabled: !allowNavigation,
@@ -47,7 +47,7 @@ function RundownMenu({ allowNavigation }: RundownMenuProps) {
             { type: 'divider' },
             {
               type: 'destructive',
-              label: 'Clear all',
+              label: 'すべてクリア',
               icon: IoTrash,
               onClick: handlers.open,
             },
@@ -60,21 +60,21 @@ function RundownMenu({ allowNavigation }: RundownMenuProps) {
       <Dialog
         isOpen={isOpen}
         onClose={handlers.close}
-        title='Clear rundown'
+        title='ランダウンをクリア'
         showBackdrop
         showCloseButton
         bodyElements={
           <>
-            You will lose all data in your rundown. <br /> Are you sure?
+            ランダウンのすべてのデータが失われます。<br />よろしいですか？
           </>
         }
         footerElements={
           <>
             <Button variant='ghosted-white' size='large' onClick={handlers.close}>
-              Cancel
+              キャンセル
             </Button>
             <Button variant='destructive' size='large' onClick={deleteAll}>
-              Delete all
+              すべて削除
             </Button>
           </>
         }
