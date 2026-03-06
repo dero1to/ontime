@@ -44,14 +44,13 @@ jobs:
         run: pnpm dist-mac --env-mode=loose
         timeout-minutes: 60
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload macOS artifact
+        uses: actions/upload-artifact@v4
         with:
-          files: |
+          name: ontime-macOS
+          path: |
             ./apps/electron/dist/ontime-macOS-x64.dmg
             ./apps/electron/dist/ontime-macOS-arm64.dmg
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build_windows:
     runs-on: windows-latest
@@ -73,12 +72,11 @@ jobs:
       - name: Electron - Build app
         run: pnpm dist-win
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
         with:
-          files: './apps/electron/dist/ontime-win64.exe'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: ontime-Windows
+          path: ./apps/electron/dist/ontime-win64.exe
 
   build_ubuntu:
     runs-on: ubuntu-latest
@@ -100,12 +98,11 @@ jobs:
       - name: Electron - Build app
         run: pnpm dist-linux
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
         with:
-          files: |
+          name: ontime-Linux
+          path: |
             ./apps/electron/dist/ontime-linux-x86_64.AppImage
             ./apps/electron/dist/ontime-linux-arm64.AppImage
             ./apps/electron/dist/ontime-linux-armv7l.AppImage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
